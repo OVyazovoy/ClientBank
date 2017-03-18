@@ -7,7 +7,7 @@ import Style from './assets/styles/index.scss'
 import { I18nextProvider } from 'react-i18next';
 
 const store = configureStore();
-import i18n from './i18n'; // initialized i18next instance
+import i18n from './libs/i18n'; // initialized i18next instance
 
 render(
 

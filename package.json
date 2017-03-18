@@ -10,7 +10,9 @@
       "es2015",
       "react"
     ],
-    "plugins": ["transform-decorators-legacy"]
+    "plugins": [
+      "transform-decorators-legacy"
+    ]
   },
   "dependencies": {
     "i18next": "^7.1.2",
@@ -18,6 +20,7 @@
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-i18next": "^2.2.0",
+    "react-modal": "^1.7.3",
     "react-redux": "^5.0.2",
     "redux": "^3.6.0"
   },
