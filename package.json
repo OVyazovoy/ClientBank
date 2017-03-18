@@ -9,11 +9,15 @@
     "presets": [
       "es2015",
       "react"
-    ]
+    ],
+    "plugins": ["transform-decorators-legacy"]
   },
   "dependencies": {
+    "i18next": "^7.1.2",
+    "i18next-resource-store-loader": "^0.1.1",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
+    "react-i18next": "^2.2.0",
     "react-redux": "^5.0.2",
     "redux": "^3.6.0"
   },
@@ -21,6 +25,7 @@
     "babel-core": "^6.21.0",
     "babel-eslint": "^7.1.1",
     "babel-loader": "^6.2.10",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-preset-es2015": "^6.18.0",
     "babel-preset-react": "^6.16.0",
     "copy-webpack-plugin": "^4.0.1",
