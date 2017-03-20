@@ -40,7 +40,8 @@ class Page extends Component {
         let {t, year} = this.props;
         return (
             <div className='ib page'>
-                <button onClick={this.showModalHandler.bind(this)}>{t("test")}</button>
+                <button className="hint--bottom" data-hint="dasdhjk"
+                        onClick={this.showModalHandler.bind(this)}>{t("test")}</button>
                 <p>
                     <button className='btn' onClick={this.onYearBtnClick.bind(this)}>2017</button>
                     {' '}
