@@ -15,9 +15,11 @@
     ]
   },
   "dependencies": {
+    "element-class": "^0.2.2",
     "i18next": "^7.1.2",
     "i18next-resource-store-loader": "^0.1.1",
     "react": "^15.4.2",
+    "react-alert": "^1.0.14",
     "react-dom": "^15.4.2",
     "react-i18next": "^2.2.0",
     "react-modal": "^1.7.3",
