@@ -1,8 +1,10 @@
 import React, {PropTypes, Component} from 'react'
+import {Link} from 'react-router'
+
 
 export default class Page extends Component {
     onYearBtnClick(e) {
-        this.props.setYear(+e.target.innerText)
+        this.props.changeYear(+e.target.innerText)
     }
 
     render() {
@@ -11,10 +13,11 @@ export default class Page extends Component {
             <div className='ib page'>
                 <p>
                     <button className='btn' onClick={this.onYearBtnClick.bind(this)}>2017</button>{' '}
-                    <button className='btn' onClick={this.onYearBtnClick.bind(this)}>2016</button>{' '}
-                    <button className='btn' onClick={this.onYearBtnClick.bind(this)}>2015</button>
+                    <button className='btn' onClick={this.onYearBtnClick.bind(this)}>2016</button>
                 </p>
                 <h3>{year} год</h3>
+                <br/>
+                <Link to='dynamic'>Динамическая загрузка</Link>
             </div>
         )
     }
@@ -22,6 +25,6 @@ export default class Page extends Component {
 
 Page.propTypes = {
     year: PropTypes.number.isRequired,
-    setYear: PropTypes.func.isRequired
+    changeYear: PropTypes.func.isRequired
 
 };

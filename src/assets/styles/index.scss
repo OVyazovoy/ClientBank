@@ -5,4 +5,7 @@ body {
 :local(.main){
   color: red;
   background-image: url(img/lego-3d.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position-x: center;
 }

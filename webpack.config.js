@@ -1,11 +1,13 @@
 const path = require('path'),
     webpack = require('webpack'),
-    ExtractTextPlugin = require('extract-text-webpack-plugin'),
-    CopyWebpackPlugin = require('copy-webpack-plugin'),
     HtmlWebpackPlugin = require('html-webpack-plugin'),
     VERSION = process.env.npm_config_BUILD_VER?'build_'+process.env.npm_config_BUILD_VER+'_':'';
+
 module.exports = {
-    entry: path.join(__dirname, 'src/index.jsx'),
+    entry: [
+        'webpack-hot-middleware/client',
+        path.join(__dirname, 'src/index.jsx')
+    ],
 
     output: {
         filename: `${VERSION}bundle.js`,
@@ -19,14 +21,13 @@ module.exports = {
     },
 
     module: {
-        preLoaders: [
+        loaders: [
             {
+                enforce: 'pre',
                 test: /\.js$/,
                 exclude: /node_modules/,
-                loaders: ['eslint']
-            }
-        ],
-        loaders: [
+                loaders: ['eslint-loader']
+            },
             {
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
@@ -34,11 +35,10 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                // loader: 'style!css!sass'
-                loader: ExtractTextPlugin.extract('css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]', "css!sass")
+                loader: 'style-loader!css-loader!sass-loader'
             },
             {
-                test: /\.(woff2|woff|ttf|eot|svg)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+                test: /\.(woff2|woff|ttf|eot)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
                 loaders: [
                     `url-loader?name=dist/fonts/[name]_[hash].[ext]`
                 ]
@@ -55,18 +55,13 @@ module.exports = {
     devtool: 'eval-source-map',
 
     resolve: {
-        extensions: ['','.js','.jsx']
+        extensions: ['.js','.jsx']
     },
 
     plugins:
         [
-            // new CopyWebpackPlugin([{
-            //     from: 'src/assets/index.html',
-            //     to: path.join(__dirname, `dist/${VERSION}_index.html`)
-            // }]),
-            new ExtractTextPlugin(`${VERSION}style.css`, {
-                allChunks: true
-            }),
+            new webpack.optimize.OccurrenceOrderPlugin(),
+            new webpack.HotModuleReplacementPlugin(),
             new webpack.optimize.UglifyJsPlugin({
                 compress: { warnings: false }
             }),
