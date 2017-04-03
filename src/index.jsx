@@ -7,11 +7,13 @@ import { syncHistoryWithStore } from 'react-router-redux'
 import configureStore from './store/configureStore'
 import Routing from './routing'
 import Style from './assets/styles/index.scss'
+import { I18nextProvider } from 'react-i18next';
 
 /**
  * Настраиваем хранилище
  */
 const store = configureStore();
+import i18n from './libs/i18n'; // initialized i18next instance
 
 /**
  * Добавляем роутинг в redux
@@ -19,11 +21,13 @@ const store = configureStore();
 const history = syncHistoryWithStore(hashHistory, store);
 
 render(
-    <Provider store={store}>
-        <div className={Style.main}>
+    <I18nextProvider i18n={ i18n }>
+       <Provider store={store}>
+          <div className={Style.main}>
             <Routing history={history}/>
-        </div>
-    </Provider>,
+          </div>
+        </Provider>,
+    </I18nextProvider>,
     document.getElementById('root')
 );
 
