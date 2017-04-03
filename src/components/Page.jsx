@@ -1,4 +1,5 @@
 import React, {PropTypes, Component} from 'react'
+import {Link} from 'react-router'
 import {translate} from 'react-i18next';
 import Modal from 'react-modal';
 import ReactDOM from 'react-dom';
@@ -32,7 +33,6 @@ class Page extends Component {
             className: 'customAlert'
         };
     }
-import {Link} from 'react-router'
 
     onYearBtnClick(e) {
         this.props.changeYear(+e.target.innerText)
@@ -77,23 +77,14 @@ import {Link} from 'react-router'
                 <button onClick={this.showAlert}>Show Alert</button>
 
                 <p>
-                    <button className='btn' onClick={this.onYearBtnClick.bind(this)}>2017</button>
-                    {' '}
-                    <button className='btn' onClick={this.onYearBtnClick.bind(this)}>2016</button>
-                    {' '}
-                    <button className='btn' onClick={this.onYearBtnClick.bind(this)}>2015</button>
-                </p>
-                <h3>{year} год</h3>
-
                     <button className='btn' onClick={this.onYearBtnClick.bind(this)}>2017</button>{' '}
                     <button className='btn' onClick={this.onYearBtnClick.bind(this)}>2016</button>
                 </p>
                 <h3>{year} год</h3>
-                <br/>
-                <Link to='dynamic'>Динамическая загрузка</Link>
+        <br/>
+        <Link to='dynamic'>Динамическая загрузка</Link>
 
-            </div>
-
+        </div>
         )
     }
 }

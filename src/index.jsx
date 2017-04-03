@@ -21,13 +21,13 @@ import i18n from './libs/i18n'; // initialized i18next instance
 const history = syncHistoryWithStore(hashHistory, store);
 
 render(
-    <I18nextProvider i18n={ i18n }>
-       <Provider store={store}>
-          <div className={Style.main}>
-            <Routing history={history}/>
-          </div>
-        </Provider>,
-    </I18nextProvider>,
+    <div className={Style.main}>
+        <I18nextProvider i18n={ i18n }>
+           <Provider store={store}>
+                <Routing history={history}/>
+            </Provider>
+        </I18nextProvider>
+    </div>,
     document.getElementById('root')
 );
 
@@ -38,7 +38,7 @@ if (module.hot) {
     module.hot.accept('./routing', () => {
         const NewRoot = require('./routing').default;
         render(
-            <NewRoot />,
+            <NewRoot/>,
             document.getElementById('root')
         );
     });
