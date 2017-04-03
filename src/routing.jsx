@@ -16,7 +16,7 @@ const routes =  {
         {
             path: '/',
             getComponent(location, cb) {
-                System.import('./containers/PageContainer')
+                import('./containers/PageContainer')
                     .then(loadRoute(cb))
                     .catch(errorLoading);
             }
@@ -24,7 +24,7 @@ const routes =  {
         {
             path: 'dynamic',
             getComponent(location, cb) {
-                System.import('./components/Dynamic')
+                import('./components/Dynamic')
                     .then(loadRoute(cb))
                     .catch(errorLoading);
             }
