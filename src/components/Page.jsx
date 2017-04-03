@@ -32,9 +32,10 @@ class Page extends Component {
             className: 'customAlert'
         };
     }
+import {Link} from 'react-router'
 
     onYearBtnClick(e) {
-        this.props.setYear(+e.target.innerText)
+        this.props.changeYear(+e.target.innerText)
     }
 
     closeModal(e) {
@@ -84,6 +85,13 @@ class Page extends Component {
                 </p>
                 <h3>{year} год</h3>
 
+                    <button className='btn' onClick={this.onYearBtnClick.bind(this)}>2017</button>{' '}
+                    <button className='btn' onClick={this.onYearBtnClick.bind(this)}>2016</button>
+                </p>
+                <h3>{year} год</h3>
+                <br/>
+                <Link to='dynamic'>Динамическая загрузка</Link>
+
             </div>
 
         )
@@ -92,7 +100,7 @@ class Page extends Component {
 
 Page.propTypes = {
     year: PropTypes.number.isRequired,
-    setYear: PropTypes.func.isRequired
+    changeYear: PropTypes.func.isRequired
 
 };
 export default Page;
