@@ -3,12 +3,12 @@
 
 
 body {
-
+  background-color: #222;
+  color: #fafafa;
 }
 
 :local(.main){
-  color: red;
-  background-image: url(img/lego-3d.svg);
+  background-image: url(img/redux.png);
   background-size: contain;
   background-repeat: no-repeat;
   background-position-x: center;

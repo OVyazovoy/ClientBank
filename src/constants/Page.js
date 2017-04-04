@@ -1,1 +1,1 @@
-export const SET_YEAR = 'SET_YEAR';
+export const CHANGE_CHOOSE = 'CHANGE_CHOOSE';

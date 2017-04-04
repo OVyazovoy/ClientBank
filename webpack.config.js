@@ -1,6 +1,7 @@
 const path = require('path'),
     webpack = require('webpack'),
     HtmlWebpackPlugin = require('html-webpack-plugin'),
+    CopyWebpackPlugin = require('copy-webpack-plugin'),
     VERSION = process.env.npm_config_BUILD_VER?'build_'+process.env.npm_config_BUILD_VER+'_':'';
 
 module.exports = {
@@ -60,6 +61,11 @@ module.exports = {
 
     plugins:
         [
+            new CopyWebpackPlugin([{
+                from: 'src/static/',
+                to: path.join(__dirname, `dist/static/`),
+                toType:'dir'
+            }]),
             new webpack.optimize.OccurrenceOrderPlugin(),
             new webpack.HotModuleReplacementPlugin(),
             new webpack.optimize.UglifyJsPlugin({

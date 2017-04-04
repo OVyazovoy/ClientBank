@@ -1,13 +1,13 @@
-import { SET_YEAR } from '../constants/Page'
+import { CHANGE_CHOOSE } from '../constants/Page'
 
 let initialState = {
-    year: 2016
+    choose: 'NONE'
 };
 
 export default function page(state = initialState, action) {
     switch (action.type) {
-        case SET_YEAR:
-            return Object.assign({},state,{year: action.payload});
+        case CHANGE_CHOOSE:
+            return Object.assign({},state,{choose: action.payload});
         default:
             return state;
     }

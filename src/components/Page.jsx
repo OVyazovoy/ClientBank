@@ -34,8 +34,8 @@ class Page extends Component {
         };
     }
 
-    onYearBtnClick(e) {
-        this.props.changeYear(+e.target.innerText)
+    onBtnClick(e) {
+        this.props.changeChoose(e.target.innerText)
     }
 
     closeModal(e) {
@@ -50,39 +50,51 @@ class Page extends Component {
 
     showAlert() {
         msg.error('Some text or component', {
-            icon: <img src="path/to/some/img/32x32.png"/>
+            icon: <img width='32' src="static/img/react.png"/>
         });
         let alert = ReactDOM.findDOMNode(msg);
         elementClass(alert).add('customAlert');
     }
 
     render() {
-        let {t, year} = this.props;
+        let {t, choose} = this.props;
         return (
             <div className='ib page'>
+
+                {/*Change store*/}
+                <p>
+                    <button className='btn' onClick={this.onBtnClick.bind(this)}>React</button>{' '}
+                    <button className='btn' onClick={this.onBtnClick.bind(this)}>Redux</button>
+                </p>
+                <h3>You choose: {choose}</h3>
+                <br/>
+
+                {/*Modal*/}
                 <Modal
                     isOpen={this.state.showModal}
                     style={customStyles}
-                    contentLabel="Example Modal"
-                >
+                    contentLabel="Example Modal">
                     <button onClick={this.closeModal.bind(this)}>close</button>
                     <div>I am a modal</div>
+                    <img width='70' src="static/img/lego-3d.svg"/>
                 </Modal>
-                <button className="hint--bottom" data-hint="dasdhjk"
+                <button className="hint--bottom" data-hint="Hint text"
                         onClick={this.showModalHandler.bind(this)}>
                     {t("test")}
                 </button>
+                <br/>
+                <br/>
 
+                {/*Alert*/}
                 <AlertContainer ref={(a) => global.msg = a} {...this.alertOptions} />
                 <button onClick={this.showAlert}>Show Alert</button>
+                <br/>
+                <br/>
 
-                <p>
-                    <button className='btn' onClick={this.onYearBtnClick.bind(this)}>2017</button>{' '}
-                    <button className='btn' onClick={this.onYearBtnClick.bind(this)}>2016</button>
-                </p>
-                <h3>{year} год</h3>
-        <br/>
-        <Link to='dynamic'>Динамическая загрузка</Link>
+                {/*Link*/}
+                <Link to='dynamic'>
+                    <button>Динамическая загрузка</button>
+                </Link>
 
         </div>
         )
@@ -90,8 +102,8 @@ class Page extends Component {
 }
 
 Page.propTypes = {
-    year: PropTypes.number.isRequired,
-    changeYear: PropTypes.func.isRequired
+    choose: PropTypes.string.isRequired,
+    changeChoose: PropTypes.func.isRequired
 
 };
 export default Page;

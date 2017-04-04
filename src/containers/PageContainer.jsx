@@ -1,17 +1,17 @@
 import { connect } from 'react-redux'
-import {setYear} from '../actions/PageActions'
+import {changeChoose} from '../actions/PageActions'
 import Page from '../components/Page'
 
 function mapStateToProps(state) {
     return {
-        year: state.page.year
+        choose: state.page.choose
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        changeYear(company){
-            dispatch(setYear(company));
+        changeChoose(choose){
+            dispatch(changeChoose(choose));
         }
     }
 }

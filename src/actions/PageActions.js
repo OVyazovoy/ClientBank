@@ -1,8 +1,8 @@
-import { SET_YEAR } from '../constants/Page'
+import { CHANGE_CHOOSE } from '../constants/Page'
 
-export function setYear(year) {
+export function changeChoose(choose) {
     return {
-        type: SET_YEAR,
-        payload: year
+        type: CHANGE_CHOOSE,
+        payload: choose
     }
 }
